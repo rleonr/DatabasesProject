@@ -1,4 +1,5 @@
 <?php
+namespace application;
 require_once('Entity.php');
 
 class User implements Entity{
@@ -11,7 +12,7 @@ class User implements Entity{
     private $province;
     private $country;
     
-    function _construct($id){
+    function __construct($id){
         $this->setUserID($id);
     }
     
@@ -24,7 +25,7 @@ class User implements Entity{
     public function getID(){
         if($this->UserID!= -1)
             return $this->UserID;
-        else return "Object Not initialized"
+        else return "Object Not initialized";
     }
     public function setUserID($id){
         $this->UserID= $id;
