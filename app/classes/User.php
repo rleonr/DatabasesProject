@@ -16,8 +16,11 @@ class User implements Entity{
         $this->setUserID($id);
     }
     
-    public function getData_json(){
-        // returns current state in json format
+    public function getData(){
+        // hacer query y retornar datos del usuario
+        return array(
+            'id'=> $this->UserID,
+        );
     }
     public function persist(){
         // execute query to save current state into database        

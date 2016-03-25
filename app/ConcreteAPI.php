@@ -10,8 +10,9 @@ class ConcreteAPI extends API{
     }
 
      protected function user() {
+         $User= new User($this->args[0]);
         if ($this->method == 'GET') {
-            return "Your name is " . $this->User->name;
+            return $User->getData();
         } else {
             return "Only accepts GET requests";
         }
