@@ -2,7 +2,7 @@
 namespace application;
 require_once('Entity.php');
 
-class User implements Entity{
+class User extends Entity{
     private $UserID;
     private $password;
     private $firstName;
@@ -24,6 +24,14 @@ class User implements Entity{
     }
     public function persist(){
         // execute query to save current state into database        
+    }
+    
+    public function delete(){
+        // execute query to delete object from db
+    }
+    public static function getAllInstances()
+    {
+        return "Todos los users";
     }
     public function getID(){
         if($this->UserID!= -1)

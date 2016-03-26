@@ -85,7 +85,7 @@ abstract class API{
         return json_encode($data);
     }
 
-    private function _cleanInputs($data) {
+    protected function _cleanInputs($data) {
         $clean_input = Array();
         if (is_array($data)) {
             foreach ($data as $k => $v) {
