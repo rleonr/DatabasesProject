@@ -10,7 +10,7 @@ class ConcreteAPI extends API{
     }
 
      protected function user() {
-         if(count($this->args)>0){
+         if(count($this->args)===1){
             if(is_numeric($this->args[0]))
                 $User= new User($this->args[0]);
             else
@@ -31,13 +31,15 @@ class ConcreteAPI extends API{
                 return "Unknown verb";
             }
         }
-        else{
+        else if(count($this->args)===0){
             if($this->method=='GET')
             {
                 return User::getAllInstances();
             }
             else return "{}";
         }
+        else
+            return "{}";
      }
 }
 ?>
