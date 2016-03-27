@@ -3,7 +3,6 @@ namespace application;
 require_once('Entity.php');
 
 class User extends Entity{
-    private $UserID;
     private $password;
     private $firstName;
     private $lastName;
@@ -12,14 +11,13 @@ class User extends Entity{
     private $province;
     private $country;
     
-    function __construct($id){
-        $this->setUserID($id);
+    function __construct($id) {
+        parent::__construct($id);
     }
-    
     public function getData(){
         // hacer query y retornar datos del usuario
         return array(
-            'id'=> $this->UserID,
+            'id'=> $this->ID,
         );
     }
     public function persist(){
@@ -33,14 +31,7 @@ class User extends Entity{
     {
         return "Todos los users";
     }
-    public function getID(){
-        if($this->UserID!= -1)
-            return $this->UserID;
-        else return "Object Not initialized";
-    }
-    public function setUserID($id){
-        $this->UserID= $id;
-    }
+
     public function setPassword($password){
         $this->password= $password;
     }     
