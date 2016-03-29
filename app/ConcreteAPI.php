@@ -5,41 +5,52 @@ require_once('api.php');
 
 class ConcreteAPI extends API{
     private $params;
+    private $entity;
     public function __construct($request, $origin) {
         parent::__construct($request);
     }
-
-     protected function user() {
-         if(count($this->args)===1){
+    
+    protected function user() {
+         return $this->processEndpoint('application\User');
+    }
+    protected function profile(){
+        return $this->processEndpoint('application\Profile');
+    }
+    
+    protected function processEndpoint($endpoint){
+       if(count($this->args)===1){
             if(is_numeric($this->args[0]))
-                $User= new User($this->args[0]);
+                $this->entity= new $endpoint($this->args[0]);
             else
                 return "Invalid ID";
-            if ($this->method == 'GET') {
+            return ConcreteAPI::RESTcontroller();
+        }
+        else if(count($this->args)===0){
+            return ConcreteAPI::getAllInstances($endpoint);
+        }
+        else
+            return "Invalid URL";
+    }
+     
+     private function RESTcontroller(){
+         if ($this->method == 'GET') {
                 $this->params= $this->_cleanInputs($_GET);
-                return $User->getData();
+                return $this->entity->getData();
             } 
             else if($this->method=='POST'){
                 $this->params= $this->_cleanInputs($_POST);
-                $User.setPassword(password_hash($this->params[1]));
-                $User.setName($this->params[2],$this->params[3]);
-                $User.setEmail($this->params[4]);
-                $User.setLocation($this->params[5],$this->params[6],$this->params[7]); 
-                return $User->persist();
+                return $this->entity->persist($params);
             }
             else {
                 return "Unknown verb";
             }
-        }
-        else if(count($this->args)===0){
+     }
+     private function getAllInstances($type){
             if($this->method=='GET')
             {
-                return User::getAllInstances();
+                return Entity::getAllInstances($type);
             }
             else return "{}";
-        }
-        else
-            return "{}";
      }
 }
 ?>
