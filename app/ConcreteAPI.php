@@ -68,6 +68,9 @@ class ConcreteAPI extends API{
                 $this->params= $this->_cleanInputs($_POST);
                 return $this->controller->persist($this->params);
             }
+            else if($this->method=='DELETE'){
+                return $this->controller->delete($this->params);
+            }
             else {
                 return "Unknown verb";
             }
