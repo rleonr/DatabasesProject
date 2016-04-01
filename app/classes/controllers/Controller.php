@@ -1,14 +1,17 @@
 <?php
 namespace application;
-require_once('PostgreInterface.php');
-abstract class Entity{
+require_once("PostgreInterface.php");
+abstract class Controller{
+    
+    protected $entity;
     protected $databaseInterface;
-    function __construct($id) {
+    
+    function __construct() {
         $this->databaseInterface= new PostgreInterface();
     }
-    abstract public function getData();
+    abstract public function getEntity($params);
     abstract public function persist($params);
-    abstract public function delete();
+    abstract public function delete($params);
     static public function getAllInstances($type){
         if(is_string($type)){
             $dbinterface= new PostgreInterface();
@@ -17,4 +20,4 @@ abstract class Entity{
         return null;
     }
 }
-?> 
+?>
