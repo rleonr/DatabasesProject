@@ -3,6 +3,12 @@ namespace application;
 require_once('classes/controllers/Controller.php');
 require_once('classes/controllers/UserController.php');
 require_once('classes/controllers/ProfileController.php');
+require_once('classes/controllers/ActorController.php');
+require_once('classes/controllers/RoleController.php');
+require_once('classes/controllers/StudioController.php');
+require_once('classes/controllers/MovieController.php');
+require_once('classes/controllers/TopicController.php');
+require_once('classes/controllers/DirectorController.php');
 require_once('api.php');
 
 class ConcreteAPI extends API{
@@ -18,6 +24,24 @@ class ConcreteAPI extends API{
     protected function profile(){
         return $this->processEndpoint('application\ProfileController');
     }
+    protected function actor(){
+        return $this->processEndpoint('application\ActorController');
+    }
+    protected function role(){
+        return $this->processEndpoint('application\RoleController');
+    }
+    protected function studio(){
+        return $this->processEndpoint('application\StudioController');
+    }
+    protected function movie(){
+        return $this->processEndpoint('application\MovieController');
+    }
+    protected function topic(){
+        return $this->processEndpoint('application\TopicController');
+    }
+    protected function director(){
+        return $this->processEndpoint('application\DirectorController');
+    }
     
     protected function processEndpoint($endpoint){
        if(count($this->args)===1){
@@ -26,10 +50,10 @@ class ConcreteAPI extends API{
             }
             else
                 return "Invalid ID";
-            return ConcreteAPI::RESTcontroller();
+            return $this->RESTcontroller();
         }
         else if(count($this->args)===0){
-            return ConcreteAPI::getAllInstances($endpoint);
+            return $this->getAllInstances($endpoint);
         }
         else
             return "Invalid URL";

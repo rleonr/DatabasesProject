@@ -2,8 +2,7 @@
 namespace application;
 require_once("PostgreInterface.php");
 abstract class Controller{
-    
-    protected $entity;
+
     protected $databaseInterface;
     
     function __construct() {
