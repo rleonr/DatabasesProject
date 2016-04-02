@@ -1,0 +1,15 @@
+<div>
+	<h4>{{movie.name}}</h4>
+	<img ng-src="{{movie.img}}" alt="">
+	<div>
+		<h5>Information</h5>
+		<ul>
+			<li>{{movie.date}} </li>
+			<li>{{movie.director}} </li>
+			<li>Topics: <ul>
+					<li ng-repeat="t in topics"></li>
+				</ul>
+			</li>
+		</ul>
+	</div>
+</div>

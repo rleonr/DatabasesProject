@@ -36,7 +36,7 @@ abstract class API{
         header("Access-Control-Allow-Methods: *");
         //CORS to enable AJAX requests for POST/PUT/DELETE without risking security
         header("Content-Type: application/json");
-       // print($request);
+        //print_r($request);
         $this->args = explode('/', rtrim($request, '/')); // get request parameters
         $this->endpoint = array_shift($this->args);
         if (array_key_exists(0, $this->args) && !is_numeric($this->args[0])) {
