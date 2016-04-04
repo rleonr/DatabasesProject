@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="en" ng-app='MovieRecommender' ng-controller='main'>
+<html lang="en" ng-app='MovieRecommender'>
 <head>
     <meta charset="UTF-8">
-    <title>{{Title}}</title>
+    <title>{{title}}</title>
      <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="public/css/main.css">
 </head>
 <body>
     <app></app>
@@ -14,4 +15,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.5.0/angular.js"></script>
 <script src="public/js/dependencies/angular_1_router.js"></script>
 <script src="public/js/app.js"></script>
+<script src="public/js/movie.js"></script>
+<script type="text/javascript">
+	angular.element(document.getElementsByTagName('head')).append(angular.element('<base href="' + window.location.pathname + '" />'));
+</script>
 </html>

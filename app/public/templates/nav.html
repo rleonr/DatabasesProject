@@ -10,17 +10,18 @@
         </div>
         <div class="collapse navbar-collapse" id="opciones">
             <ul class="nav navbar-nav">
-              <li class="active btn-success"><a href="#">Home <span class="sr-only">(current)</span></a></li>
-              <li ><a href="#">Sign up</a></li>
-              <li><a href="#">Raters</a></li>
+              <li class="active btn-success"><a ng-link="['Home']">Home <span class="sr-only">(current)</span></a></li>
+              <li ><a ng-link="['Movie']">Movies</a></li>
+              <li ><a ng-link="['New']">Sign up</a></li>
+              <li><a ng-link="['Rater']">Raters</a></li>
               <li class="dropdown">
                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu <span class="caret"></span></a>
                 <ul class="dropdown-menu">
-                  <li><a href="#">Actors</a></li>
-                  <li><a href="#">Categories</a></li>
-                  <li><a href="#">Browse Ratings</a></li>
+                  <li><a ng-link="['Actor']">Actors</a></li>
+                  <li><a ng-link="['Category']">Categories</a></li>
+                  <li><a ng-link="['Rating']">Browse Ratings</a></li>
                   <li role="separator" class="divider"></li>
-                  <li><a href="#">Advanced Search</a></li>
+                  <li><a ng-link="['Search']">Advanced Search</a></li>
                 </ul>
               </li>
             </ul>
@@ -28,9 +29,10 @@
               <div class="form-group">
                   <input type="text" class="form-control" placeholder="Movie">
               </div>
-              <button type="submit" class="btn btn-info">Search</button>
+              <button ng-submit='advancedSearch()' class="btn btn-info">Search</button>
             </form>
         </div><!-- /.navbar-collapsable -->
     </div><!-- /.container-fluid -->
   </nav>
 </div> <!--navigation bar-->
+<ng-outlet></ng-outlet>

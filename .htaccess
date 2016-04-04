@@ -2,5 +2,6 @@
 RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule app/(.*)$ app/api_access.php?request=$1 [QSA,NC,L]
+RewriteRule api/(.*)$ api/api_access.php?request=$1 [QSA,NC,L]
 </IfModule>
+Options All -Indexes
